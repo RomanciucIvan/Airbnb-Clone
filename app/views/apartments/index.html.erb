@@ -1,0 +1,25 @@
+
+
+
+
+<h1>All our apartments</h1>
+<div class="container">
+<div class="row justify-content-between">
+  <% @apartments.each do |apartment| %>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= apartment.title %></h5>
+          <p class="card-text"><%= apartment.address %></p>
+          <p class="card-text"><i class="fa-solid fa-euro-sign"></i><%= apartment.price %></p>
+          <p class="card-text"><i class="fa-solid fa-user"></i> <%= apartment.description %></p>
+        </div>
+        <p>
+          <%= link_to "More info", apartment, class: "btn btn-primary btn-sm" %>
+          <%= link_to "Edit", edit_apartment_path(apartment), class: "btn btn-primary btn-sm" %>
+          <%= link_to "Delete", apartment, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+        </p> 
+      </div>
+    </div>
+  <% end %>
+</div>
