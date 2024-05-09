@@ -1,26 +1,38 @@
 class ApartmentsController < ApplicationController
 
   before_action :set_apartment, only: %i[ show edit update destroy ]
+  after_action :verify_policy_scoped, only: :index
 
   def index
     @apartments = Apartment.all
+    @apartments = policy_scope(Apartment).all
+    # authorize @apartments
   end
 
   def show
     @apartment = Apartment.find(params[:id])
+    authorize @apartment
   end
   
   def new
     @apartment = Apartment.new
+    @apartments = Apartment.all
+    authorize @apartment
   end
+  
 
   def edit
     @apartment = Apartment.find(params[:id])
+    authorize @apartment
+    
   end
   
 
   def create
     @apartment = Apartment.new(apartment_params)
+    @apartment.user = current_user
+
+    authorize @apartment
 
     respond_to do |format|
       if @apartment.save
@@ -34,6 +46,7 @@ class ApartmentsController < ApplicationController
   end
 
   def update
+    authorize @apartment
     respond_to do |format|
       if @apartment.update(apartment_params)
         format.html { redirect_to apartment_url(@apartment), notice: "Apartment was successfully updated." }
@@ -46,6 +59,7 @@ class ApartmentsController < ApplicationController
   end
 
   def destroy
+    authorize @apartment
     @apartment.destroy
 
     respond_to do |format|
@@ -60,7 +74,7 @@ class ApartmentsController < ApplicationController
     end
 
     def apartment_params
-      params.require(:apartment).permit(:title, :address, :description, :price)
+      params.require(:apartment).permit(:title, :address, :description, :price, photos: [])
     end
 end
 

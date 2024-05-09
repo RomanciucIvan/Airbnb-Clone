@@ -4,8 +4,17 @@
 
 
 <div>
+<%# <% @apartment.photos.each do |photo| %>
+  <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<%# <% end %> %> %> %>
+  <% if policy(@apartment).edit? %>
   <%= link_to "Edit this apartment", edit_apartment_path(@apartment) %> |
+  <% end %>
+
   <%= link_to "Back to apartments", apartments_path %>
 
+  <% if policy(@apartment).destroy? %>
   <%= button_to "Destroy this apartment", @apartment, method: :delete %>
+  <% end %>
+  
 </div>

@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Создаем пользователя
-user = User.create!(email: "vanea022291@mail.ru", password: "vanea0291")
+user = User.create!(email: "vanea02991@mail.ru", password: "vanea0291")
 
 
 # Создаем квартиру и ассоциируем с пользователем
@@ -71,3 +71,10 @@ apartment = user.apartments.create!(
   description: 'Sphinx palace pyramids view — это отель, расположенный в городе Каир. К услугам гостей бесплатные велосипеды, общий лаундж, терраса и ресторан.',
   price: 325,
 )
+
+require "open-uri"
+
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+apartment = Apartment.new(title: "NES", description: "A great console")
+apartment.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+apartment.save
