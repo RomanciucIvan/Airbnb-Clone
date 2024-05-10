@@ -7,7 +7,6 @@ class ApartmentsController < ApplicationController
   end
 
   def show
-    @apartment = Apartment.find(params[:id])
   end
   
   def new
@@ -15,43 +14,29 @@ class ApartmentsController < ApplicationController
   end
 
   def edit
-    @apartment = Apartment.find(params[:id])
   end
   
 
   def create
     @apartment = Apartment.new(apartment_params)
-
-    respond_to do |format|
-      if @apartment.save
-        format.html { redirect_to apartment_url(@apartment), notice: "Apartment was successfully created." }
-        format.json { render :show, status: :created, location: @apartment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @apartment.errors, status: :unprocessable_entity }
-      end
+    if @apartment.save
+      redirect_to apartment_path(@apartment), notice: "Apartment was successfully created." 
+    else
+      render :new, status: :unprocessable_entity 
     end
   end
 
   def update
-    respond_to do |format|
-      if @apartment.update(apartment_params)
-        format.html { redirect_to apartment_url(@apartment), notice: "Apartment was successfully updated." }
-        format.json { render :show, status: :ok, location: @apartment }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @apartment.errors, status: :unprocessable_entity }
-      end
+    if @apartment.update(apartment_params)
+      redirect_to apartment_path(@apartment), notice: "Apartment was successfully updated." 
+    else
+      render :edit, status: :unprocessable_entity 
     end
   end
 
   def destroy
     @apartment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to apartments_url, notice: "Apartment was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to apartments_path, notice: "Apartment was successfully destroyed." 
   end
 
   private

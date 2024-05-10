@@ -1,11 +1,5 @@
-
-
-
-
-
-
 <div class="container">
-  <div style="display: flex; justify-content: space-between;">
+  <div class="d-flex justify-content-between">
     <!-- Левая колонка -->
     <div style="display: flex; flex-direction: column;">
       <!-- Карточка 1 -->
@@ -29,6 +23,10 @@
           <p>
             <strong>Description:</strong>
             <%= @apartment.description %>
+          </p>
+          <p>
+            <strong>Price:</strong>
+            <%= @apartment.price %>
           </p>
         </div>
       </div>
