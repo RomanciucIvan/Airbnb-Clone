@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <!-- Левая колонка -->
+    <div style="display: flex; flex-direction: column;">
+      <!-- Карточка 1 -->
+      <div class="card">
+        <div id="left-card1">
+          <p>
+            <strong>Title:</strong>
+            <%= @apartment.title %>
+          </p>
+          <p>
+            <strong>Address:</strong>
+            <%= @apartment.address %>
+          </p>
+        </div>
+      </div>
+
+      <!-- Карточка 2 -->
+      <div style="margin-bottom: 30px;"></div>
+      <div class="card">
+        <div id="left-card2">
+          <p>
+            <strong>Description:</strong>
+            <%= @apartment.description %>
+          </p>
+          <p>
+            <strong>Price:</strong>
+            <%= @apartment.price %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+   
