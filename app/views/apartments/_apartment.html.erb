@@ -1,11 +1,5 @@
-
-
-
-
-
-
 <div class="container">
-  <div style="display: flex; justify-content: space-between;">
+  <div class="d-flex justify-content-between">
     <!-- Левая колонка -->
     <div style="display: flex; flex-direction: column;">
       <!-- Карточка 1 -->
@@ -23,6 +17,7 @@
             <strong>Description:</strong>
             <%= @apartment.description %>
           </p>
+<<<<<<< HEAD
           <div>
             <% if @apartment.photos.attached? %>
               <% @apartment.photos.each do |photo| %>
@@ -31,6 +26,12 @@
             <% end %>
           </div>
 
+=======
+          <p>
+            <strong>Price:</strong>
+            <%= @apartment.price %>
+          </p>
+>>>>>>> main
         </div>
       </div>
     </div>

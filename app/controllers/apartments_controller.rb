@@ -4,13 +4,11 @@ class ApartmentsController < ApplicationController
   after_action :verify_policy_scoped, only: :index
 
   def index
-    @apartments = Apartment.all
-    @apartments = policy_scope(Apartment).all
-    # authorize @apartments
+    @apartments = policy_scope(Apartment)
+    # authorize @apartment
   end
 
   def show
-    @apartment = Apartment.find(params[:id])
     authorize @apartment
   end
   
@@ -22,50 +20,37 @@ class ApartmentsController < ApplicationController
   
 
   def edit
-    @apartment = Apartment.find(params[:id])
     authorize @apartment
-    
   end
   
 
   def create
     @apartment = Apartment.new(apartment_params)
     @apartment.user = current_user
-
     authorize @apartment
 
-    respond_to do |format|
-      if @apartment.save
-        format.html { redirect_to apartment_url(@apartment), notice: "Apartment was successfully created." }
-        format.json { render :show, status: :created, location: @apartment }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @apartment.errors, status: :unprocessable_entity }
-      end
+    if @apartment.save
+      redirect_to apartment_path(@apartment), notice: "Apartment was successfully created." 
+    else
+      render :new, status: :unprocessable_entity 
     end
   end
 
   def update
     authorize @apartment
-    respond_to do |format|
-      if @apartment.update(apartment_params)
-        format.html { redirect_to apartment_url(@apartment), notice: "Apartment was successfully updated." }
-        format.json { render :show, status: :ok, location: @apartment }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @apartment.errors, status: :unprocessable_entity }
-      end
+
+    if @apartment.update(apartment_params)
+      redirect_to apartment_path(@apartment), notice: "Apartment was successfully updated." 
+    else
+      render :edit, status: :unprocessable_entity 
     end
   end
 
   def destroy
     authorize @apartment
-    @apartment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to apartments_url, notice: "Apartment was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @apartment.destroy
+    redirect_to apartments_path, notice: "Apartment was successfully destroyed." 
   end
 
   private
