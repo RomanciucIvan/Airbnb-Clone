@@ -17,7 +17,7 @@ class ApartmentPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    update?
   end
 
   def update?
