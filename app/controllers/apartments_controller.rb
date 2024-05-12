@@ -8,7 +8,6 @@ class ApartmentsController < ApplicationController
 
   def show
     authorize @apartment
-    @apartment = Apartment.find(params[:id])
     @review = Review.new 
   end
   

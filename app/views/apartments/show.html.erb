@@ -1,21 +1,16 @@
 <%= render @apartment %>
 <div>
   <%= link_to "Back to apartments", apartments_path %>
-
   <%= link_to "Edit", edit_apartment_path(apartment), class: "btn btn-primary btn-sm" %>
   <%= link_to "Delete", apartment, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
 </div>
 
-
-
 <div>
   <%= render 'reviews/form', review: @review %>
 </div>
-
-
 <% @apartment.reviews.each do |review| %>
   <p><%= review.content %></p>
-  <% if review.id.present? %>
+  <%= if policy(@review).destroy? %>
     <%= button_to "Удалить", apartment_review_path(@apartment, review), method: :delete, data: { confirm: 'Вы уверены?' } %>
   <% end %>
 <% end %>
