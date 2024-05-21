@@ -1,0 +1,49 @@
+<h1>Booking Details</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @apartment.title %>
+</p>
+
+<p>
+  <strong>Apartment ID:</strong>
+  <%= @booking.apartment_id %>
+</p>
+
+<p>
+  <strong>User ID:</strong>
+  <%= @booking.user_id %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @apartment.price %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @booking.start_date %>
+</p>
+
+<p>
+  <strong>End Date:</strong> 
+  <%= @booking.end_date %>
+</p>
+
+<p>
+  <strong>Total Price:</strong> 
+  <%= @booking.total_price %>
+</p>
+
+<p>
+  <strong>Price Breakdown:</strong>
+  <%= number_to_currency(@apartment.price) %> x <%= @booking.number_of_nights %> ночей = <%= number_to_currency(@booking.total_price) %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @booking.status %>
+</p>
+
+
+<%= link_to "Back to Apartment", apartment_path(@apartment) %>
