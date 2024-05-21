@@ -1,0 +1,15 @@
+<h1>Календарь бронирований</h1>
+
+<%= month_calendar events: @bookings do |date, bookings| %>
+  <div class="day">
+    <%= date.day %>
+    <% bookings.each do |booking| %>
+      <div class="event" style="background-color: <%= booking.user == current_user ? 'green' : 'red' %>;">
+        <%= booking.user.email %><br>
+        <%= booking.start_date %> - <%= booking.end_date %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'Новое бронирование', new_apartment_booking_path(@apartment) %>

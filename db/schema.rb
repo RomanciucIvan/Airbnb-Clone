@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_08_211556) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_17_235229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,31 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_211556) do
     t.index ["user_id"], name: "index_apartments_on_user_id"
   end
 
+<<<<<<< Updated upstream
+=======
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.integer "apartment_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id"
+    t.decimal "total_price"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.bigint "apartment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["apartment_id"], name: "index_reviews_on_apartment_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+>>>>>>> Stashed changes
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,4 +94,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_211556) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apartments", "users"
+<<<<<<< Updated upstream
+=======
+  add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "apartments"
+  add_foreign_key "reviews", "users"
+>>>>>>> Stashed changes
 end

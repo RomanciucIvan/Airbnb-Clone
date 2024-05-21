@@ -8,6 +8,26 @@
   <%= link_to "Back to apartments", apartments_path %>
 
   <% if policy(@apartment).destroy? %>
+<<<<<<< Updated upstream
   <%= button_to "Delete", @apartment, method: :delete %>
   <% end %>
 </div>
+=======
+    <%= link_to "Delete", @apartment, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+  <% end %>
+</div>
+
+<div>
+  <%= render 'reviews/form', review: @review %>
+</div>
+<% @apartment.reviews.each do |review| %>
+  <p><%= review.content %></p>
+  <% if policy(review).destroy? %>
+    <%= button_to "Delete", apartment_review_path(@apartment, review), method: :delete, data: { confirm: 'Вы уверены?' } %>
+  <% end %>
+<% end %>
+
+<%= link_to "Book this apartment", new_apartment_booking_path(@apartment), class: "btn btn-primary btn-sm" %>
+
+
+>>>>>>> Stashed changes
