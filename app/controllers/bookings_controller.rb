@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    authorize @apartment, :create_booking?
+    authorize @booking
     @booking = @apartment.bookings.build(start_date: Date.today, end_date: Date.today)
   end
   

@@ -7,6 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Создаем пользователя
+Booking.destroy_all
+Review.destroy_all
+Apartment.destroy_all
+User.destroy_all
 user = User.create!(email: "vanea02991@mail.ru", password: "vanea0291")
 
 
@@ -75,6 +79,7 @@ apartment = user.apartments.create!(
 require "open-uri"
 
 file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
-apartment = Apartment.new(title: "NES", description: "A great console")
-apartment.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+apartment = Apartment.new(title: "NES", description: "A great console", user: user) 
+apartment.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 apartment.save
+puts "All apartmens was created"

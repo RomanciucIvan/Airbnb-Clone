@@ -29,10 +29,6 @@ class ApartmentPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def create_booking?
-    true
-  end
-
   def calendar?
     user == record.user
   end
