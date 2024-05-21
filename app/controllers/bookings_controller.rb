@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     @booking.total_price = calculate_total_price(@booking.start_date, @booking.end_date, @apartment.price)
     authorize @booking
     if @booking.save
-      redirect_to [@apartment, @booking], notice: 'Booking was successfully created.'
+      redirect_to apartment_booking_path(@apartment, @booking), notice: 'Booking was successfully created.'
     else
       render :new
     end
@@ -49,7 +49,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :status)
+    params.require(:booking).permit(:start_date, :end_date)
   end
   
 end
