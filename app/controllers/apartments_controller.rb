@@ -10,6 +10,7 @@ class ApartmentsController < ApplicationController
 
   def show
     authorize @apartment
+    @review = Review.new 
   end
   
   def new

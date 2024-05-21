@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_235229) do
     t.index ["user_id"], name: "index_apartments_on_user_id"
   end
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
   create_table "bookings", force: :cascade do |t|
@@ -67,17 +68,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_235229) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+=======
+>>>>>>> main
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.bigint "apartment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.bigint "user_id"
     t.index ["apartment_id"], name: "index_reviews_on_apartment_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
 >>>>>>> Stashed changes
+=======
+    t.index ["apartment_id"], name: "index_reviews_on_apartment_id"
+  end
+
+>>>>>>> main
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -94,10 +103,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_235229) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apartments", "users"
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
   add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "apartments"
   add_foreign_key "reviews", "users"
 >>>>>>> Stashed changes
+=======
+  add_foreign_key "reviews", "apartments"
+>>>>>>> main
 end
