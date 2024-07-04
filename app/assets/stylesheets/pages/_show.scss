@@ -1,0 +1,142 @@
+.main-photo {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 270px;
+  object-fit: cover; // получается пропорционально растянет
+  object-position: center;
+  margin-bottom: 7px;
+}
+
+.main-address {
+  margin-bottom: 7px;
+}
+
+.main-description {
+  margin-bottom: 7px;
+}
+
+.form-booking_wrapper {
+  position: relative;
+  padding: 20px;
+  flex: 1;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 20px;
+  align-self: start;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+.main-content {
+  display: flex;
+}
+
+.apartment-desc {
+  width: 50%;
+}
+
+.booking-form {
+  position: sticky;
+  right: 20px;
+  top: 0;
+}
+
+.card-booking {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Увеличиваем радиус размытия и смещение */
+}
+
+.card-1 {
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  padding: 20px;
+  margin-right: 20px;
+  border: 1px solid #555; /* Более темный цвет границы (#555) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Увеличенная тень */
+}
+
+.text-content {
+  flex: 1;
+}
+
+.image-content {
+  margin-left: 20px;
+}
+
+.small-image {
+  max-width: 80px; /* Максимальная ширина 80 пикселей */
+  max-height: 80px; /* Максимальная высота 80 пикселей */
+  width: auto; /* Автоматическое вычисление ширины */
+  height: auto; /* Автоматическое вычисление высоты */
+  display: block; /* Правильное отображение как блочного элемента */
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.small-text img {
+  margin-left: 10px; /* Отступ слева от изображения, чтобы создать разделение */
+  vertical-align: middle; /* Выравнивание изображения по центру по вертикали */
+  max-height: 20px; /* Максимальная высота изображения */
+}
+
+
+.card-2 {
+  display: flex;
+  flex-direction: column; /* Расположение элементов в столбец */
+  align-items: center; /* Выравнивание элементов по центру по горизонтали */
+  border-radius: 15px;
+  border: 1px solid #333; /* Цвет границы */
+  padding: 10px; /* Поля внутри карточки */
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.divider {
+  width: 100%; /* Ширина линии на всю ширину карточки */
+  margin: 10px 0; /* Отступы сверху и снизу линии */
+  border-top: 2px solid #0e0b0b; /* Стиль и цвет линии */
+}
+
+
+.text-content-2 {
+  flex: 1; /* Занимает доступное пространство */
+}
+
+.image-content-2 {
+  margin-top: 10px; /* Отступ сверху от текста к изображению */
+}
+
+.small-text-2 {
+  margin: 0; /* Убираем отступы от текста */
+}
+
+.small-text-2 img {
+  max-height: 50px; /* Максимальная высота изображения */
+}
+
+
+.custom-button1 {
+  background-color: #c7151e; /* Цвет фона кнопки */
+  color: #fff; /* Цвет текста кнопки */
+  border: none; /* Убираем границу */
+  padding: 10px 20px; /* Внутренние отступы кнопки */
+  font-size: 16px; /* Размер шрифта кнопки */
+  border-radius: 5px; /* Закругление углов кнопки */
+  max-width: 200px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer; /* Курсор при наведении */
+}
+
+.custom-button1:hover {
+  background-color: #0056b3; /* Измененный цвет фона при наведении */
+}

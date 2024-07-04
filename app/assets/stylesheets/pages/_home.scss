@@ -1,1 +1,42 @@
-// Specific CSS for your home-page
+.circle-button {
+  background-color: red;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+  stroke-width: 4;
+  fill: none;
+}
+
+.booking-button {
+  margin-top: 20px;
+}
+
+.apartment-actions {
+  margin-top: 20px;
+}
+
+.reviews {
+  margin-top: 20px;
+}
+.circle-button {
+  border-radius: 50%; /* Делает кнопку круглой */
+  width: 50px; /* Задает фиксированную ширину кнопки */
+  height: 50px; /* Задает фиксированную высоту кнопки */
+  display: flex; /* Устанавливает блочный тип элемента и позволяет использовать flexbox */
+  justify-content: center; /* Выравнивает содержимое кнопки по центру по горизонтали */
+  align-items: center; /* Выравнивает содержимое кнопки по центру по вертикали */
+}
+

@@ -1,27 +1,26 @@
-<%= render @apartment %>
-<div>
+<div class="container">
+  <%= render "apartments/apartment"  %>
 
-  <% if policy(@apartment).edit? %>
-    <%= link_to "Edit", edit_apartment_path(@apartment) %> |
-  <% end %>
+  <div class="reviews" style="max-width: 600px;">
+    <%= render 'reviews/form', review: @review %>
 
-  <%= link_to "Back to apartments", apartments_path %>
+    <% @apartment.reviews.each do |review| %>
+      <p><%= review.content %></p>
+      <% if policy(review).destroy? %>
+        <%= button_to "Delete", apartment_review_path(@apartment, review), method: :delete, data: { confirm: 'Вы уверены?' } %>
+      <% end %>
+    <% end %>
+  </div>
 
-  <% if policy(@apartment).destroy? %>
+  <div class="apartment-actions">
+    <% if policy(@apartment).edit? %>
+      <%= link_to "Edit", edit_apartment_path(@apartment) %> |
+    <% end %>
 
-    <%= link_to "Delete", @apartment, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
-  <% end %>
+    <%= link_to "Back to apartments", apartments_path %>
+
+    <% if policy(@apartment).destroy? %>
+      <%= link_to "Delete", @apartment, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+    <% end %>
+  </div>
 </div>
-
-<div>
-  <%= render 'reviews/form', review: @review %>
-</div>
-<% @apartment.reviews.each do |review| %>
-  <p><%= review.content %></p>
-  <% if policy(review).destroy? %>
-    <%= button_to "Delete", apartment_review_path(@apartment, review), method: :delete, data: { confirm: 'Вы уверены?' } %>
-  <% end %>
-<% end %>
-
-<%= link_to "Book this apartment", new_apartment_booking_path(@apartment), class: "btn btn-primary btn-sm" %>
-

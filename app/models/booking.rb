@@ -11,6 +11,10 @@ class Booking < ApplicationRecord
     (end_date - start_date).to_i
   end
 
+  def cleaning_fee
+    self.apartment.cleaning_fee
+  end
+
   private
 
   def end_date_after_start_date

@@ -1,49 +1,88 @@
-<h1>Booking Details</h1>
+<div class="main-content">
+  <%= link_to apartment_path(@apartment), class: 'back-link' do %>
+      &lt;
+  <% end %>
+  <div class="apartment-desc">
+    <div class="main-info">
+      <div class="main-info_content">
+        <div class="main-address"><h1>Подтвердите и оплатите</h1></div>
+          <div class="card-1">
+            <div class="text-content">
+              <h4 class="small-text"><strong>Это редкая находка.</strong></h4>
+              <h4 class="small-text">Жилье хозяина Rares & Gabie обычно забронировано.</h4>
+            </div>
+            <div class="image-content">
+              <img src="https://img.freepik.com/premium-photo/sticker-of-a-crystal-diamond_677801-1015.jpg" alt="Картинка" class="small-image">
+            </div>
+          </div>
+        <div 
+          class="main-address"><h1>Ваша поездка</h1>
+          <div class="booking__date-item">
+            <div class="booking__date-labels">
+              <div class="booking__date-label">Даты</div>
+              <div class="booking__date-range">
+                <%= @start_date.strftime("%d %b") %> - <%= @end_date.strftime("%d %b") %>
+              </div>
+            </div>
+          <div class="booking__edit-link">изменить</div>
+        </div>
+         <div class="booking__ghost-item">
+          <div class="booking__ghost-labels">
+            <div class="booking__ghost-label">Гости</div>
+            <div class="booking__guest-count" id="guest-count">
+              1 гость <!-- Начальное значение -->
+            </div>
+          </div>
+          <div class="booking__edit-link" id="edit-link">изменить</div>
+        </div>
+      </div>
+      <div class="booking__line"></div>
+      <div
+        class="main-description"><h1>Варианты оплаты</h1> 
+      </div>
+       <div class="card-1">
+          <div class="text-content">
+            <h4 class="small-text"> Заплатите <%= number_to_currency(@apartment.price * @number_of_nights + @cleaning_fee) %> сейчас </h4>
+            <h4 class="small-text"> Оплатите часть сейчас, а остаток внесите позже
+                            $1 130,95 к оплате сегодня, $846,31 — 6 авг. 2024 г.. Без дополнительных сборов. <%= link_to "Подробнее" %></h4>
+          </div>
+        </div>
+      <div class="booking__line"></div>
+      <div
+        class="main-description"><h1>Чем оплатить</h1> 
+      </div>
+        <div class="card-1">
+          <div class="text-content">
+            <h4 class="small-text"> Кредитная или дебитовая карта </h4>
+          </div>
+        </div>
+        <div class="card-2">
+          <div class="text-content-2">
+            <h4 class="small-text-2"> номер карты <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUjdr_VCCXL4NDTI7OQM58qL-u9mSU-i-ePA&s"> </h4>
+          </div>
+           <hr class="divider">
+            <div class="image-content-2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUjdr_VCCXL4NDTI7OQM58qL-u9mSU-i-ePA&s" alt="Изображение">
+          </div>
+        </div class="button-container1">
+      <%= button_to "Подтвердить и оплатить", apartment_path(@apartment), class: "custom-button1" %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @apartment.title %>
-</p>
+  <%# <div class="card-booking">
+    <div class="card-body"> %>
+      <div class="form-booking_wrapper">
+        <div class="image-booking-container">
+          <%= cl_image_tag @apartment.photos.first.key, class: "booking-photo", crop: :fill %>
+          <div class="booking-container">
+            <h6><%= @apartment.title %></h6>
+            <h6>Количество комментариев: <%= @apartment.reviews.count %></h6>
+          </div>
+        </div>
+        <%= render 'apartments/booking_info' %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Apartment ID:</strong>
-  <%= @booking.apartment_id %>
-</p>
-
-<p>
-  <strong>User ID:</strong>
-  <%= @booking.user_id %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @apartment.price %>
-</p>
-
-<p>
-  <strong>Start Date:</strong>
-  <%= @booking.start_date %>
-</p>
-
-<p>
-  <strong>End Date:</strong> 
-  <%= @booking.end_date %>
-</p>
-
-<p>
-  <strong>Total Price:</strong> 
-  <%= @booking.total_price %>
-</p>
-
-<p>
-  <strong>Price Breakdown:</strong>
-  <%= number_to_currency(@apartment.price) %> x <%= @number_of_nights %> ночей = <%= number_to_currency(@booking.total_price) %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @booking.status %>
-</p>
-
-
-<%= link_to "Back to Apartment", apartment_path(@apartment) %>
+</div>

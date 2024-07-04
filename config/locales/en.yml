@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  number:
+    currency:
+      format:
+        unit: "€"
+        format: "%n %u" # Число перед символом валюты
+        delimiter: " "  # Разделитель тысяч
+        separator: ","  # Десятичный разделитель
+        precision: 2    # Количество знаков после запятой
+

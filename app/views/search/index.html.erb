@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты поиска жилья</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center my-5">
+        <div class="col-md-8">
+            <h1 class="text-center">Результаты поиска жилья</h1>
+            <h2 class="text-center">Прибытие: <%= params[:arrival] %>, Выезд: <%= params[:departure] %>, Гости: <%= params[:guests] %></h2>
+          <ul class="list-group">
+            <% @results.each do |apartment| %>
+              <li class="list-group-item">
+                <h3><%= apartment.title %></h3>
+                <p><%= apartment.description %></p>
+                <p><strong>Адрес:</strong> <%= apartment.address %></p>
+                <p><strong>Цена:</strong> <%= apartment.price %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

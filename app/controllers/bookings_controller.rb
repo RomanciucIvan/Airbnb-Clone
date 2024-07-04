@@ -8,13 +8,23 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
+    @start_date = @booking.start_date
+    @end_date = @booking.end_date
+    @cleaning_fee = @booking.apartment.cleaning_fee
     @number_of_nights = @booking.number_of_nights
     authorize @booking
   end
 
   def new
-    authorize @booking
+    @cleaning_fee = @apartment.cleaning_fee || 0
+    @start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today
+    @end_date = params[:end_date] ? Date.parse(params[:end_date]) : Date.today + 1
+    @total_price = calculate_total_price(@start_date, @end_date, @apartment.price)
     @booking = @apartment.bookings.build(start_date: Date.today, end_date: Date.today)
+    @number_of_nights = (@end_date - @start_date).to_i
+    authorize @booking
+
   end
   
   def create
@@ -53,4 +63,3 @@ class BookingsController < ApplicationController
   end
   
 end
-
