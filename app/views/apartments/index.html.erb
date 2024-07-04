@@ -1,19 +1,81 @@
-<h1>All our apartments</h1>
+<% img_placeholder ="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAREAAAC4CAMAAADzLiguAAAAPFBMVEX///+rq6unp6fMzMykpKTp6enx8fHU1NS0tLS6urr6+vqwsLDHx8fPz8/w8PD19fXa2trh4eHl5eXAwMAzrysnAAADpklEQVR4nO2c2ZKDIBAAE6KJmsPr//91c69yKKREHav7dctl6YVhGJTdDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZqE5LMU1XbrvVupELUe9dO9t5PsFyZfuvY1FjWRL994GRnQeRs5NOj+rNpIVCzSMER2M6GBEByM6GNHBiI4cI+mhbdtLE12SFCO3XKnH36ryJnLDQoxU/xm2usZtWIaRWu1nUyLCSNnfh6moE0eEkYvqK4lavpBgpNA368ktYsMSjKSJbqSK2LAEI7VuRB0iNizBSGUYuURsWIIRc4zEXH8lGDkacSTm6YEEI7tMX2zKiA2LMFL185HAMJJWdcj2UIQRfZCEDJEyT5JkH7BcyzBSnrujJORY9r0BSPzXaxlGHv/pz5TJQoQUn4Mw5T1KhBi5x5LseUadnYJKRlcVPLLEGNkVt7qq0rASWtOZa7nno3KM/EB5/mGF2rSRvLdqe+Z1WzZy0Moq6ujz1IaNNJoQz1CyXSO9IPIeJD5ZyXaN6KXIJx6hZLNGKpuQ/Xl8A7BVI6nNx+MAbPTJjRopjAKCdyjZqJHWOmeeSsay+W0asQcRv1CySSM3t4/7IGmHH96ikW8JwKHkNPj0Fo3o2bvBYCiRayRt84u1a/WYkOHfK9bISam92lvW0qOZvRvzZqgwINXI+5zP0rd8dIgMHxwLNdI4+zYaRF643y6QaaT4nxlaxtXo538O3LJlGmk7fetlXKW9/ybuUCLSSC8l7WZchTt7N5S4QolEI1pK2sm4Tt5C7mPLEUoEGjH3tZ++OUoAjkHiKAwINGIWx86vHxTjmUhPib0wIM+IZV/7DpOhn/bZjyvEGbHOjGffQoLIG1thQJoRV3HsFhZEXqjWolyaEUdKqvLyl89hbYUBYUbcKWlYVP1i7p5lGfFOSb05G9JlGfHZ14ZhZiWijFwnF2IJJZKM1NP7eKCFEkFGLEfbk5D1sxJBRvz3tWFohQE5Rk6etaAflPQKA2KMpJFGyJNuYUCKkdJ1tD0JXfVSjFjfj5mMbigRYmToaHsSJf+FARlGftjXhvJ9j1GEEef7MdOhvu8xijASN4i8lXy+dJNgxPhOLw7vL80FGDnO4uN7FCbAyGx3xb0KA+s3cpntysnkGUpWb6Q8zcjjP7B6I7ODEZ1VGznfjrNzW7WRfbIA6zayFBjRWeWtxhU3X+vUi92Ofoh9CR0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMA2+AN7/TZH3Ls1kQAAAABJRU5ErkJggg=="  %>
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Поиск жилья</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
 <div class="container">
-<div class="row justify-content-between">
-  <% @apartments.each do |apartment| %>
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= apartment.title %></h5>
-          <p class="card-text"><%= apartment.address %></p>
-          <p class="card-text"><i class="fa-solid fa-euro-sign"></i><%= apartment.price %></p>
-          <p class="card-text"><i class="fa-solid fa-user"></i> <%= apartment.description %></p>
+  <div class="row justify-content-center my-5">
+    <div class="col-md-8">
+      <h1 class="text-center">Найдите идеальное жилье</h1>
+      <form action="/search" method="get" class="d-flex justify-content-between"> 
+        <div class="form-row">
+          <div class="col-md-3 mb-3">
+            <label for="location">Где</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="Поиск направлений" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="arrival">Прибытие</label>
+            <input type="date" class="form-control" id="arrival" name="arrival" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="departure">Выезд</label>
+            <input type="date" class="form-control" id="departure" name="departure" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="guests">Кто едет?</label>
+            <select class="form-control" id="guests" name="guests">
+              <option value="1">1 гость</option>
+              <option value="2">2 гостя</option>
+              <option value="3">3 гостя</option>
+              <option value="4">4 гостя</option>
+              <option value="5">5 гостей</option>
+            </select>
+          </div>
         </div>
-        <p>
-          <%= link_to "More info", apartment, class: "btn btn-primary btn-sm" %>
-        </p> 
-      </div>
+        <button type="submit" class="circle-button" data-testid="structured-search-input-search-button">
+          <div class="button-content">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" focusable="false">
+              <path d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9"></path>
+            </svg>
+          </div>
+        </button>
+      </form>
     </div>
-  <% end %>
+  </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="d-flex flex-wrap justify-content-between"> 
+      <% @apartments.each do |apartment| %>
+        <%# <div class="col-4"> %>
+          <div class="apartment-card mb-1">
+            <%= link_to apartment, class: "apartment-link" do %> 
+              <div class="card-body">
+                <% if apartment.photos.attached? %>
+                  <%= cl_image_tag apartment.photos.first.key, class: "card-image object-fit-cover w-100 h-50", crop: :fill %>
+                  <% else %>
+                   <%= image_tag img_placeholder, class: "card-image object-fit-cover w-100 h-50" %>
+                <% end %>
+                <p class="card-heading"><%= apartment.title %></p>
+                <p class="card-content"><%= apartment.address %></p>
+                <p class="card-content"><i class="fa-solid fa-euro-sign"></i><%= apartment.price %></p>
+             </div>
+            <% end %> 
+          </div>
+        <%# </div> %>
+      <% end %>
+    </div>
+  </div> 
+</div>
+
+<%# "object-fit-cover w-100 h-27" %>
+          

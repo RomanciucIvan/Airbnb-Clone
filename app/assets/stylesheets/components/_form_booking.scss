@@ -1,0 +1,83 @@
+.booking {
+  width: 300px;
+  font-family: Arial, sans-serif;
+}
+
+.booking__price-per-night {
+  display: flex;
+  align-items: baseline;
+}
+
+.booking__price-amount {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.booking__currency, .booking__per-night {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.booking__details {
+  margin-top: 20px;
+}
+
+.booking__date, .booking__guests {
+  margin-bottom: 15px;
+}
+
+.booking__date-label, .booking__guests-label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.booking__date-input, .booking__guests-select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.booking__button {
+  width: 100%;
+  padding: 10px;
+  background-color: #f50057;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.booking__line {
+  height: 1px; // Высота линии 
+  background-color: black;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+
+.booking__note {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #555;
+  font-weight: bold;
+}
+
+.booking__cost-breakdown {
+  margin-top: 20px;
+}
+
+.booking__cost-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  text-decoration: underline;
+}
+
+.booking__total {
+  margin-top: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}

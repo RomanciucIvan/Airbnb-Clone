@@ -1,0 +1,18 @@
+<div class="booking__line"></div>
+<div class="booking__note">Детализация цены</div>
+<div class="booking__cost-breakdown">
+  <div class="booking__cost-item">
+    <span class="booking__cost-label"><%= number_to_currency(@apartment.price) %> x <%= @number_of_nights %> ночей</span>
+    <span class="booking__cost-value"><%= number_to_currency(@apartment.price * @number_of_nights) %></span>
+  </div>
+  <div class="booking__cost-item">
+    <span class="booking__cost-label">Плата за уборку</span>
+  <span class="booking__cost-value" id="cleaning-fee-value"><%= number_to_currency(@cleaning_fee) %> x <span id="night-count"><%= (@end_date - @start_date).to_i %></span> ночей</span>
+  <span class="booking__cost-value" id="cleaning-fee-total"><%= number_to_currency(@cleaning_fee * (@end_date - @start_date).to_i) %></span>
+  </div>
+</div>
+<div class="booking__line"></div>
+<div class="booking__total">
+  <span class="booking__total-label">Всего (без учета налогов)</span>
+  <span class="booking__total-value"><%= number_to_currency(@apartment.price * @number_of_nights + @cleaning_fee) %></span>
+</div>

@@ -1,0 +1,48 @@
+
+.photo-container {
+  position: relative;
+}
+
+.gallery-content {
+  position: relative;
+  }
+.open-modal {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  line-height: 100%;
+  text-decoration: none;
+  border-radius: 6px;
+  background: #0b5ed7;
+  padding: 15px;
+}
+
+.open-modal svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  stroke: transparent;
+}
+
+#popap-galery {
+  display: none;
+}
+.popap-galery__content {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.image-item {
+  max-width: 390px;
+  display: block;
+}
+.image-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

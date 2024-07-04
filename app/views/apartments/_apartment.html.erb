@@ -1,34 +1,49 @@
-<div class="container">
-  <div class="d-flex justify-content-between">
-    <!-- Левая колонка -->
-    <div class="d-flex flex-column">
-      <!-- Карточка 1 -->
-      <div class="card">
-        <div id="left-card1">
-          <p>
-            <strong>Title:</strong>
-            <%= @apartment.title %>
-          </p>
-          <p>
-            <strong>Address:</strong>
-            <%= @apartment.address %>
-          </p>
-           <p>
-            <strong>Description:</strong>
-            <%= @apartment.description %>
-          </p>
-          <div>
-            <% if @apartment.photos.attached? %>
-              <% @apartment.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-              <% end %>
-            <% end %>
-          </div>
+<div>
+  <h4><%= @apartment.title %></h4>
+</div>
+<div class="gallery-content">
+  <% if @apartment.photos.attached? %>
+    <%# @apartment.photos.each do |photo| %>
+      <%= cl_image_tag @apartment.photos.first.key, class: "main-photo", crop: :fill %>
+    <%# end %>
+  <% end %> 
+  <div id="popap-galery">
+      <div class="popap-galery__content">
+        <% if @apartment.photos.attached? %>
+          <% @apartment.photos.each do |photo| %>
+            <div class="image-item">
+              <%= cl_image_tag photo.key, crop: :fill %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+  <a href="#popap-galery" class="open-modal" data-fslightbox="lightbox">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M3 11.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-10-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-10-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
+    </svg> 
+    открыть галерею
+  </a>
+</div>
+<div class="main-content">
+  <div class="apartment-desc">
 
-          <p>
-            <strong>Price:</strong>
-            <%= @apartment.price %>
-          </p>
+    <div class="main-info">
+      <div class="main-info_content">
+        <div 
+          class="main-address"><%= @apartment.address %>
+        </div>
+        <div
+          class="main-description"><%= @apartment.description %>
+        </div>
+        <div>
+          <strong>Price:</strong>
+          <%= @apartment.price %>
         </div>
       </div>
     </div>
+  </div>
+  <div class="form-booking_wrapper">
+    <%= render 'apartments/booking_form' %>
+  </div>
+</div>

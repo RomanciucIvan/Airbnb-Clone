@@ -1,0 +1,69 @@
+.image-booking-container {
+  display: flex;
+  align-items: center;
+}
+
+.booking-photo {
+  width: 110px; 
+  height: 110px; 
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.booking-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.booking__date-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.booking__date-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking__date-label {
+  margin-bottom: 5px; 
+}
+
+.booking__edit-link {
+  margin-left: auto;
+  text-decoration: underline; // Подчеркивание текста
+  margin-right: 30px;
+}
+
+.booking__ghost-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.booking__ghost-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking__ghost-label {
+  margin-bottom: 5px;
+}
+
+.back-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #000;
+  font-size: 24px;
+  transition: background-color 0.3s; // добавляет анимацию смены цвета фона 
+}
+
+.back-link:hover {
+  background-color: #ccc; // изменяем цвет фона при наведении 
+}
+

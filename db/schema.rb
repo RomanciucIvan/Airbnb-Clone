@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_08_211556) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_24_055158) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,7 +50,33 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_211556) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cleaning_fee", default: 0
     t.index ["user_id"], name: "index_apartments_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.integer "apartment_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "user_id"
+    t.decimal "total_price"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "address"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.boolean "published"
+    t.string "name"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -58,7 +84,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_211556) do
     t.bigint "apartment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["apartment_id"], name: "index_reviews_on_apartment_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,5 +105,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_211556) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "apartments", "users"
+  add_foreign_key "bookings", "users"
   add_foreign_key "reviews", "apartments"
+  add_foreign_key "reviews", "users"
 end

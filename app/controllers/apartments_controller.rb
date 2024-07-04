@@ -6,11 +6,21 @@ class ApartmentsController < ApplicationController
   def index
     @apartments = policy_scope(Apartment)
     # authorize @apartment
+    @apartments = Apartment.all
   end
 
   def show
+    @apartment = Apartment.find(params[:id])
+    @start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today
+    @end_date = params[:end_date] ? Date.parse(params[:end_date]) : Date.today + 1
+    @cleaning_fee = @apartment.cleaning_fee || 0
+    @number_of_nights = (@end_date - @start_date).to_i
+    @total_price = calculate_total_price(@start_date, @end_date, @apartment.price)
+    # @cleaning_fee = 10
     authorize @apartment
     @review = Review.new 
+    @booking = Booking.new
+    @model = @apartment
   end
   
   def new
@@ -61,6 +71,10 @@ class ApartmentsController < ApplicationController
 
     def apartment_params
       params.require(:apartment).permit(:title, :address, :description, :price, photos: [])
+    end
+
+    def calculate_total_price(start_date, end_date, price_per_day)
+      (end_date - start_date).to_i * price_per_day
     end
 end
 

@@ -1,4 +1,3 @@
-
 class ReviewsController < ApplicationController 
   before_action :set_apartment, only: [:new, :create]
   before_action :set_review, only: [:destroy, :show]
@@ -12,8 +11,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @apartment.reviews.build(review_params)
+    @review.user = current_user
     authorize @review
-    if @review.save
+    if @review.save!
       redirect_to apartment_path(@apartment), notice: 'Review was successfully created.'
     else
       render 'apartments/show'
