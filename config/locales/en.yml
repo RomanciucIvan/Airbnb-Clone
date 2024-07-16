@@ -39,4 +39,6 @@ en:
         delimiter: " "  # Разделитель тысяч
         separator: ","  # Десятичный разделитель
         precision: 2    # Количество знаков после запятой
-
+  pages:
+    index:
+      title: "Contact Us"

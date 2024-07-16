@@ -1,3 +1,7 @@
+<% 
+  guests = [['1 гость', 1], ['2 гостя', 2], ['3 гостя', 3], ['4 гостя', 4]]
+%>
+
 <div class="booking-form">
   <%= simple_form_for([@apartment, @booking]) do |form| %>
 
@@ -10,23 +14,17 @@
     <div class="booking__details">
       <div class="booking__date">
         <%= form.label :start_date %>
-          <%= form.date_field :start_date, value: Date.today %>
+          <%= form.date_field :start_date, value: Date.today, disabled: @apartment.user == current_user %> <%#  disabled  выключаем взаимодействие с какимлибо полем  %> 
       </div>
       <div class="booking__date">
         <%= form.label :end_date %>
-      <%= form.date_field :end_date, value: Date.today %>
+      <%= form.date_field :end_date, value: Date.today, disabled: @apartment.user == current_user %>
       </div>
       <div class="booking__guests">
-        <label class="booking__guests-label" for="guests-select">ДЛЯ КОГО</label>
-        <select id="guests-select" class="booking__guests-select">
-          <option value="1">1 гость</option>
-          <option value="2">2 гостя</option>
-          <option value="3">3 гостя</option>
-          <option value="4">4 гостя</option>
-        </select>
+        <%= form.input :guests, collection: guests, class: 'booking__guests-select', disabled: @apartment.user == current_user  %>
       </div>
     </div>
   </div>
-  <%= form.submit "Book this apartment", class: "btn btn-primary" %>
+  <%= form.submit "Book this apartment", class: "btn btn-primary", disabled: @apartment.user == current_user %>
   <% end %>
 </div>

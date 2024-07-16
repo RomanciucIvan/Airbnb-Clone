@@ -1,3 +1,6 @@
+<% img_placeholder ="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAREAAAC4CAMAAADzLiguAAAAPFBMVEX///+rq6unp6fMzMykpKTp6enx8fHU1NS0tLS6urr6+vqwsLDHx8fPz8/w8PD19fXa2trh4eHl5eXAwMAzrysnAAADpklEQVR4nO2c2ZKDIBAAE6KJmsPr//91c69yKKREHav7dctl6YVhGJTdDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZqE5LMU1XbrvVupELUe9dO9t5PsFyZfuvY1FjWRL994GRnQeRs5NOj+rNpIVCzSMER2M6GBEByM6GNHBiI4cI+mhbdtLE12SFCO3XKnH36ryJnLDQoxU/xm2usZtWIaRWu1nUyLCSNnfh6moE0eEkYvqK4lavpBgpNA368ktYsMSjKSJbqSK2LAEI7VuRB0iNizBSGUYuURsWIIRc4zEXH8lGDkacSTm6YEEI7tMX2zKiA2LMFL185HAMJJWdcj2UIQRfZCEDJEyT5JkH7BcyzBSnrujJORY9r0BSPzXaxlGHv/pz5TJQoQUn4Mw5T1KhBi5x5LseUadnYJKRlcVPLLEGNkVt7qq0rASWtOZa7nno3KM/EB5/mGF2rSRvLdqe+Z1WzZy0Moq6ujz1IaNNJoQz1CyXSO9IPIeJD5ZyXaN6KXIJx6hZLNGKpuQ/Xl8A7BVI6nNx+MAbPTJjRopjAKCdyjZqJHWOmeeSsay+W0asQcRv1CySSM3t4/7IGmHH96ikW8JwKHkNPj0Fo3o2bvBYCiRayRt84u1a/WYkOHfK9bISam92lvW0qOZvRvzZqgwINXI+5zP0rd8dIgMHxwLNdI4+zYaRF643y6QaaT4nxlaxtXo538O3LJlGmk7fetlXKW9/ybuUCLSSC8l7WZchTt7N5S4QolEI1pK2sm4Tt5C7mPLEUoEGjH3tZ++OUoAjkHiKAwINGIWx86vHxTjmUhPib0wIM+IZV/7DpOhn/bZjyvEGbHOjGffQoLIG1thQJoRV3HsFhZEXqjWolyaEUdKqvLyl89hbYUBYUbcKWlYVP1i7p5lGfFOSb05G9JlGfHZ14ZhZiWijFwnF2IJJZKM1NP7eKCFEkFGLEfbk5D1sxJBRvz3tWFohQE5Rk6etaAflPQKA2KMpJFGyJNuYUCKkdJ1tD0JXfVSjFjfj5mMbigRYmToaHsSJf+FARlGftjXhvJ9j1GEEef7MdOhvu8xijASN4i8lXy+dJNgxPhOLw7vL80FGDnO4uN7FCbAyGx3xb0KA+s3cpntysnkGUpWb6Q8zcjjP7B6I7ODEZ1VGznfjrNzW7WRfbIA6zayFBjRWeWtxhU3X+vUi92Ofoh9CR0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMA2+AN7/TZH3Ls1kQAAAABJRU5ErkJggg=="  %>
+
+
 <div class="main-content">
   <%= link_to apartment_path(@apartment), class: 'back-link' do %>
       &lt;
@@ -15,8 +18,8 @@
               <img src="https://img.freepik.com/premium-photo/sticker-of-a-crystal-diamond_677801-1015.jpg" alt="Картинка" class="small-image">
             </div>
           </div>
-        <div 
-          class="main-address"><h1>Ваша поездка</h1>
+        <div class="main-address">
+          <h1>Ваша поездка</h1>
           <div class="booking__date-item">
             <div class="booking__date-labels">
               <div class="booking__date-label">Даты</div>
@@ -24,65 +27,61 @@
                 <%= @start_date.strftime("%d %b") %> - <%= @end_date.strftime("%d %b") %>
               </div>
             </div>
-          <div class="booking__edit-link">изменить</div>
-        </div>
-         <div class="booking__ghost-item">
-          <div class="booking__ghost-labels">
-            <div class="booking__ghost-label">Гости</div>
-            <div class="booking__guest-count" id="guest-count">
-              1 гость <!-- Начальное значение -->
+            <div class="booking__edit-link">изменить</div>
+          </div>
+          <div class="booking__ghost-item">
+            <div class="booking__ghost-labels">
+              <div class="booking__ghost-label">Гости</div>
+              <div class="booking__guest-count" id="guest-count">
+                1 гость <!-- Начальное значение -->
+              </div>
             </div>
-          </div>
-          <div class="booking__edit-link" id="edit-link">изменить</div>
-        </div>
-      </div>
-      <div class="booking__line"></div>
-      <div
-        class="main-description"><h1>Варианты оплаты</h1> 
-      </div>
-       <div class="card-1">
-          <div class="text-content">
-            <h4 class="small-text"> Заплатите <%= number_to_currency(@apartment.price * @number_of_nights + @cleaning_fee) %> сейчас </h4>
-            <h4 class="small-text"> Оплатите часть сейчас, а остаток внесите позже
-                            $1 130,95 к оплате сегодня, $846,31 — 6 авг. 2024 г.. Без дополнительных сборов. <%= link_to "Подробнее" %></h4>
+            <div class="booking__edit-link" id="edit-link">изменить</div>
           </div>
         </div>
-      <div class="booking__line"></div>
-      <div
-        class="main-description"><h1>Чем оплатить</h1> 
-      </div>
+        <div class="booking__line"></div>
+        <div class="main-description"><h1>Варианты оплаты</h1></div>
         <div class="card-1">
           <div class="text-content">
-            <h4 class="small-text"> Кредитная или дебитовая карта </h4>
+            <h4 class="small-text">Заплатите <%= number_to_currency(@apartment.price * @number_of_nights + @cleaning_fee) %> сейчас</h4>
+            <h4 class="small-text">Оплатите часть сейчас, а остаток внесите позже $1 130,95 к оплате сегодня, $846,31 — 6 авг. 2024 г.. Без дополнительных сборов. <%= link_to "Подробнее" %></h4>
+          </div>
+        </div>
+        <div class="booking__line"></div>
+        <div class="main-description"><h1>Чем оплатить</h1></div>
+        <div class="card-1">
+          <div class="text-content">
+            <h4 class="small-text">Кредитная или дебитовая карта</h4>
           </div>
         </div>
         <div class="card-2">
           <div class="text-content-2">
-            <h4 class="small-text-2"> номер карты <img src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUjdr_VCCXL4NDTI7OQM58qL-u9mSU-i-ePA&s"> </h4>
+            <h4 class="small-text-2">номер карты <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUjdr_VCCXL4NDTI7OQM58qL-u9mSU-i-ePA&s"></h4>
           </div>
-           <hr class="divider">
-            <div class="image-content-2">
+          <hr class="divider">
+          <div class="image-content-2">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUjdr_VCCXL4NDTI7OQM58qL-u9mSU-i-ePA&s" alt="Изображение">
           </div>
-        </div class="button-container1">
-      <%= button_to "Подтвердить и оплатить", apartment_path(@apartment), class: "custom-button1" %>
-      </div>
-    </div>
-  </div>
-
-  <%# <div class="card-booking">
-    <div class="card-body"> %>
-      <div class="form-booking_wrapper">
-        <div class="image-booking-container">
-          <%= cl_image_tag @apartment.photos.first.key, class: "booking-photo", crop: :fill %>
-          <div class="booking-container">
-            <h6><%= @apartment.title %></h6>
-            <h6>Количество комментариев: <%= @apartment.reviews.count %></h6>
-          </div>
         </div>
-        <%= render 'apartments/booking_info' %>
+        <div class="button-container1">
+          <%= button_to "Подтвердить и оплатить", apartment_path(@apartment), class: "custom-button1" %>
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="form-booking_wrapper">
+    <div class="image-booking-container">
+      <% if @apartment.photos.attached? %>
+        <%= cl_image_tag @apartment.photos.first.key, class: "card-image object-fit-cover w-100 h-50", crop: :fill %>
+        <% else %>
+          <%= image_tag img_placeholder, class: "card-image object-fit-cover w-100 h-50" %>
+      <% end %>
+      <div class="booking-container">
+        <h6><%= @apartment.title %></h6>
+        <h6>Количество комментариев: <%= @apartment.reviews.count %></h6>
+      </div>
+    </div>
+    <%= render 'apartments/booking_info' %>
+  </div>
 </div>

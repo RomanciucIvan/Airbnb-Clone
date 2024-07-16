@@ -1,5 +1,19 @@
 {
+  "name": "airbnb-clone",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch",
+    "build:watch": "webpack --mode production --watch"
+  },
   "dependencies": {
-    "fslightbox": "^3.4.1"
+    "mapbox-gl": "^3.5.1",
+    "open": "8.4.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   }
 }

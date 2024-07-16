@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_apartment
+  before_action :set_apartment, only: [:index,:show, :edit, :new, :destroy, :create]
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -39,6 +39,25 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    authorize @booking
+    if params[:variant] == "accept"
+      @booking.status = :approved
+    elsif params[:variant] == "decline"
+      @booking.status = :declined
+    elsif params[:variant] == "cancele"
+      @booking.status = :canceled
+    end
+    @booking.save
+    redirect_to user_path
+  end
+
+  
+  def destroy
+    authorize @booking
+    @booking.destroy
+    redirect_to user_path(current_user), notice: 'Booking was successfully deleted.'  end
+
   def calendar
     @bookings = @apartment.bookings
     authorize @apartment, :calendar?
@@ -55,11 +74,11 @@ class BookingsController < ApplicationController
   end
 
   def set_booking
-    @booking = @apartment.bookings.find(params[:id])
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
   
 end

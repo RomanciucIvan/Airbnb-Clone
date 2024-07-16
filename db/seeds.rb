@@ -12,6 +12,7 @@ Review.destroy_all
 Apartment.destroy_all
 User.destroy_all
 user = User.create!(email: "vanea02991@mail.ru", password: "vanea0291")
+user1 = User.create!(email: "vanea02992@mail.ru", password: "vanea0291")
 
 
 # Создаем квартиру и ассоциируем с пользователем
@@ -79,7 +80,26 @@ apartment = user.apartments.create!(
 require "open-uri"
 
 file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
-apartment = Apartment.new(title: "NES", description: "A great console", user: user) 
+apartment = Apartment.new(title: "NES", description: "A great console", price: 100, user: user) 
 apartment.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 apartment.save
+
+apartment = user1.apartments.create!(
+  title: 'Bella Donna Hotel=1',
+  address: 'Bucuresti Str.9, MD 2001 Кишинёв, Молдова',
+  description: 'Этот 3-звездочный отель находится в 10 минутах ходьбы от Национального музея истории Молдовы. К услугам гостей номера с кондиционером, спутниковым телевидением и бесплатным WiFi.',
+  price: 75,
+)
+apartment = user1.apartments.create!(
+  title: 'TRYP by Wyndham Dubai=1',
+  address: 'Al Saef 1 Street Barsha Heights, Теком, Дубай, ОАЭ ',
+  description: 'Стильный отель TRYP by Wyndham Dubai расположен в районе Барша-Хайтс, в 600 метрах от станции метро Dubai Internet City',
+  price: 35,
+)
+apartment = user1.apartments.create!(
+  title: 'Pyramids Gem Plaza Hotel & Suites=1',
+  address: '4 Rawadat El Ahram Street, Al Remaya Square, Гиза, 19999 Каир, Египет',
+  description: 'Situated in Cairo, 1.2 km from Giza Pyramids and Great Sphinx, Pyramids Gem Plaza Hotel & Suites features accommodation with free WiFi, air conditioning, a shared lounge and a terrace.',
+  price: 95,
+)
 puts "All apartmens was created"
