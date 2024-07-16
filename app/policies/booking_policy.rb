@@ -22,7 +22,10 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    in_bookings = user.apartment_bookings
+    out_bookings = user.bookings
+
+    in_bookings.include?(record) || out_bookings.include?(record)
   end
 
   def destroy?

@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :apartments
-  # def admin?
-  #   # Возвращает true, если пользователь является администратором, и false в противном случае
-  #   # Например, если у вас есть атрибут is_admin в таблице пользователей:
-  #   is_admin
-  # end
+  has_many :bookings
+
+  def apartment_bookings
+    Booking.joins(apartment: :user).where(users: { id: self.id })
+  end
 end

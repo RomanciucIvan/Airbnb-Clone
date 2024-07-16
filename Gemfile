@@ -6,7 +6,6 @@ ruby "3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.1"
 gem 'simple_calendar'
-gem "geocoder"
 gem "devise"
 gem "pundit"
 gem "cloudinary"
@@ -15,6 +14,8 @@ gem 'fancybox-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+gem "rails-i18n"
+
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -33,6 +34,8 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
+
+gem "geocoder"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
