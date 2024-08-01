@@ -4,6 +4,7 @@ class SearchController < ApplicationController
     arrival = params[:arrival]
     departure = params[:departure]
     guests = params[:guests]
+    # @apartments = Apartment.all
 
     @results = policy_scope(Apartment.where("address ILIKE ?", "%#{address}%"))
 

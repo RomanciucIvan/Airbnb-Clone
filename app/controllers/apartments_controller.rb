@@ -6,17 +6,8 @@ class ApartmentsController < ApplicationController
   def index
     @apartments = policy_scope(Apartment)
     @booking = Booking.new
-  
-    # @markers = @apartments.geocoded.map do |apartment|
-    #   {
-    #     lat: apartment.latitude,
-    #     lng: apartment.longitude,
-    #     info_window: render_to_string(partial: "info_window", locals: { apartment: apartment })
-    #   }
-    # end
-    # @apartments = Apartment.all
-    # The `geocoded` scope filters only flats with coordinates
-    @apartments = Apartment.geocoded
+    @chatroom = Chatroom.find_by(name: "general") 
+    @apartments = Apartment.all
     @markers = @apartments.map do |apartment|
       {
         lng: apartment.longitude,
