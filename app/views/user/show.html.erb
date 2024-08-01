@@ -48,6 +48,11 @@
             </div>
             <div class="booking-total-price"><%= booking.total_price %></div>
           <% end %>
+          <% if booking.chatrooms.present? %>
+            <%= link_to "Сообщения", booking_chatroom_path(booking, booking.chatrooms.first), class: "nav-link" %>
+          <% else %>
+            <%= button_to "Создать чат", booking_chatrooms_path(booking), method: :post, class: "nav-link" %>
+          <% end %>
           <% if booking.pending? %>
             <div class="booking-delete">
               <%= button_to 'Accept', booking_path(booking, variant: "accept"), method: :patch, class: "custom-button1" %>
@@ -85,7 +90,12 @@
             </div>
             <div class="booking-total-price"><%= booking.total_price %></div>
           <% end %>
-          <% if booking.pending? %>
+          <% if booking.chatrooms.present? %>
+            <%= link_to "Сообщения", booking_chatroom_path(booking, booking.chatrooms.first), class: "nav-link" %>
+          <% else %>
+            <%= button_to "Создать чат", booking_chatrooms_path(booking), method: :post, class: "nav-link" %>
+          <% end %>
+         <% if booking.pending? %>
             <div class="booking-delete">
               <%= button_to 'Cancele', booking_path(booking, variant: "cancele"), method: :patch, class: "custom-button1" %>
             </div>

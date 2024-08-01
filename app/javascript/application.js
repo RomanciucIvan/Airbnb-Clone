@@ -5,6 +5,7 @@ import "@popperjs/core"
 import "bootstrap"
 import 'controllers/map_controller'
 import 'fslightbox' 
+import "@rails/actioncable"
 
 // import Rails from "@rails/ujs"
 // import Turbolinks from "turbolinks"

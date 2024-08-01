@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :apartment
   belongs_to :user
+  has_many :chatrooms
 
   enum :status, { pending: 0, approved: 1, declined: 2, canceled: 3 }
 
