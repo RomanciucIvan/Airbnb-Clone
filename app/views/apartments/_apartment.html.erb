@@ -1,14 +1,14 @@
 <div>
-  <h4><%= @apartment.title %></h4>
+  <h4><%= apartment.title %> <%= vlad %></h4>
 </div>
 <div class="gallery-content">
-  <% if @apartment.photos.attached? %>
-      <%= cl_image_tag @apartment.photos.first.key, class: "main-photo", crop: :fill %>
+  <% if apartment.photos.attached? %>
+      <%= cl_image_tag apartment.photos.first.key, class: "main-photo", crop: :fill %>
   <% end %> 
   <div id="popap-galery">
       <div class="popap-galery__content">
-        <% if @apartment.photos.attached? %>
-          <% @apartment.photos.each do |photo| %>
+        <% if apartment.photos.attached? %>
+          <% apartment.photos.each do |photo| %>
             <div class="image-item">
               <%= cl_image_tag photo.key, crop: :fill %>
             </div>
@@ -16,7 +16,7 @@
         <% end %>
       </div>
   </div>
-  <% if @apartment.photos.attached? %>
+  <% if apartment.photos.attached? %>
     <a href="#popap-galery" class="open-modal" data-fslightbox="lightbox">
       <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M3 11.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-10-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-10-5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm5 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
@@ -31,14 +31,14 @@
     <div class="main-info">
       <div class="main-info_content">
         <div 
-          class="main-address"><%= @apartment.address %>
+          class="main-address"><%= apartment.address %>
         </div>
         <div
-          class="main-description"><%= @apartment.description %>
+          class="main-description"><%= apartment.description %>
         </div>
         <div>
           <strong>Price:</strong>
-          <%= @apartment.price %>
+          <%= apartment.price %>
         </div>
       </div>
     </div>

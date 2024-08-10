@@ -24,4 +24,9 @@ Geocoder.configure(
   #   expiration: 2.days,
   #   prefix: 'geocoder:'
   # }
+
+  # lookup: :google,
+  # api_key: ENV['MAPBOX_API_KEY'],
+  # use_https: true,
+  # timeout: 5
 )

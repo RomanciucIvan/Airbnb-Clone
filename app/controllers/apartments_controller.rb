@@ -12,7 +12,6 @@ class ApartmentsController < ApplicationController
       {
         lng: apartment.longitude,
         lat: apartment.latitude,
-        
         info_window_html: render_to_string(partial: "info_window", locals: {apartment: apartment}),
         marker_html: render_to_string(partial: "marker", locals: {apartment: apartment})
       }
@@ -22,6 +21,17 @@ class ApartmentsController < ApplicationController
 
   def show
     @apartment = Apartment.find(params[:id])
+
+    @markers = [
+      {
+        lat: @apartment.latitude,
+        lng: @apartment.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { apartment: @apartment }),
+        marker_html: render_to_string(partial: "marker", locals: { apartment: @apartment })
+      }
+    ]
+
+
     @start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today
     @end_date = params[:end_date] ? Date.parse(params[:end_date]) : Date.today + 1
     @cleaning_fee = @apartment.cleaning_fee || 0
@@ -58,13 +68,38 @@ class ApartmentsController < ApplicationController
     end
   end
 
+  # def update
+  #   authorize @apartment
+
+  #   if @apartment.update(apartment_params)
+  #     update_coordinates_if_needed(@apartment) # Обновите координаты после успешного обновления адреса
+  #     redirect_to apartment_path(@apartment), notice: "Apartment was successfully updated." 
+  #   else
+  #     render :edit, status: :unprocessable_entity 
+  #   end
+
+  #   # if @apartment.update(apartment_params)
+  #   #   redirect_to apartment_path(@apartment), notice: "Apartment was successfully updated." 
+  #   # else
+  #   #   render :edit, status: :unprocessable_entity 
+  #   # end
+  # end
+
+
   def update
     authorize @apartment
-
     if @apartment.update(apartment_params)
-      redirect_to apartment_path(@apartment), notice: "Apartment was successfully updated." 
+      @markers = [
+        {
+          lat: @apartment.latitude,
+          lng: @apartment.longitude,
+          info_window_html: render_to_string(partial: "info_window", locals: { apartment: @apartment }),
+          marker_html: render_to_string(partial: "marker", locals: { apartment: @apartment })
+        }
+      ]
+      redirect_to @apartment, notice: 'Apartment was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity 
+      render :edit
     end
   end
 
@@ -76,6 +111,7 @@ class ApartmentsController < ApplicationController
   end
 
   private
+
     def set_apartment
       @apartment = Apartment.find(params[:id])
     end

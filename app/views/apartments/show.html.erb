@@ -1,5 +1,7 @@
 <div class="container">
-  <%= render "apartments/apartment"  %>
+  <%= render partial: "apartments/apartment", 
+    locals: {apartment: @apartment, vlad: "hello world"}
+  %>
 
   <div class="reviews" style="max-width: 600px;">
     <%= render 'reviews/form', review: @review %>
@@ -11,6 +13,11 @@
       <% end %>
     <% end %>
   </div>
+
+  <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
   <div class="apartment-actions">
     <% if policy(@apartment).edit? %>
