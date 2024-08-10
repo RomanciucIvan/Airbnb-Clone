@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  # root to: "pages#home"
+  root to: "apartments#index"
   get 'host', to: 'pages#host'
   get 'search', to: 'search#index'
   get 'vlad', to: 'pages#vlad'

@@ -4,10 +4,6 @@ class Apartment < ApplicationRecord
   has_many :reviews
   has_many :bookings
 
-
-
-  after_initialize :set_defaults
-
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
